@@ -1,11 +1,10 @@
 #include <iostream>
 
+#include "cli.cpp"
+
 int main()
 {
-    int a = 5;
-    int b = 7;
-
-    std::cout << a + b << std::endl;
+    cli::start();
 
     return 0;
 }
