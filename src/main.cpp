@@ -2,7 +2,10 @@
 
 int main()
 {
-    std::cout << "Hello world" << std::endl;
+    int a = 5;
+    int b = 7;
+
+    std::cout << a + b << std::endl;
 
     return 0;
 }
