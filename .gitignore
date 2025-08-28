@@ -21,8 +21,9 @@ CMakePresets.json
 *.lib
 
 # Ignore IDE/editor configs
-.vscode/
-.idea/
+/.vscode/
+/.devcontainer/
+/.idea/
 *.user
 *.swp
 .DS_Store
