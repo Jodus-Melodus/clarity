@@ -1,25 +1,41 @@
 #include <iostream>
 #include <string>
+#include <vector>
+
+#include "task.hpp"
 
 namespace cli
 {
-    std::string readLine(std::string prompt)
+    using namespace std;
+
+    string readLine(string prompt)
     {
-        std::string buffer;
-        std::cout << prompt;
-        std::getline(std::cin, buffer);
+        string buffer;
+        cout << prompt;
+        getline(cin, buffer);
         return buffer;
     }
 
     int start()
     {
-        std::string cmd = "";
+        string cmd = "";
+        int exitCode = -1;
+        vector<Task> tasks;
 
-        while (true)
+        while (exitCode == -1)
         {
             cmd = readLine("> ");
 
-            std::cout << cmd << std::endl;
+            if (cmd == "exit" or cmd == "close")
+            {
+                exitCode = 0;
+            }
+            else
+            {
+                exitCode = 0;
+            }
         }
+
+        return exitCode;
     }
 } // namespace cli
