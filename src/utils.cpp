@@ -4,13 +4,13 @@
 
 namespace utils
 {
-    vector<string> split(const string &s, char delimiter)
+    std::vector<std::string> split(const std::string &s, char delimiter)
     {
-        vector<string> tokens;
-        string token;
-        stringstream ss(s);
+        std::vector<std::string> tokens;
+        std::string token;
+        std::stringstream ss(s);
 
-        while (getline(ss, token, delimiter))
+        while (std::getline(ss, token, delimiter))
         {
             tokens.push_back(token);
         }

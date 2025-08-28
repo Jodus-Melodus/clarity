@@ -1,9 +1,13 @@
 #pragma once
 #include <string>
+#include <vector>
+
+#include "task.hpp"
 
 namespace cli
 {
-    std::string readLine(const std::string &prompt);
     int start();
+    int createNewTask(std::vector<Task> &tasks);
+    std::string readLine(const std::string &prompt);
 
 } // namespace cli

@@ -5,34 +5,54 @@
 #include "utils.hpp"
 #include "task.hpp"
 
-using namespace std;
 namespace cli
 {
 
-    string readLine(const string &prompt)
+    std::string readLine(const std::string &prompt)
     {
-        string buffer;
-        cout << prompt;
-        getline(cin, buffer);
+        std::string buffer;
+        std::cout << prompt;
+        std::getline(std::cin, buffer);
         return buffer;
     }
 
     int start()
     {
-        string cmd = "";
-        vector<string> args;
+        std::string cmd = "";
+        std::vector<std::string> args;
         int exitCode = -1;
-        vector<Task> tasks;
+        std::vector<Task> tasks;
 
         while (exitCode == -1)
         {
             cmd = readLine("> ");
             args = utils::split(cmd, ' ');
+            if (args.size() < 1)
+            {
+                continue;
+            }
             cmd = args.at(0);
+            args.erase(args.begin());
 
             if (cmd == "new")
             {
-                string newType = args.at(1);
+                if (args.size() == 1)
+                {
+                    std::string newType = args.at(0);
+
+                    if (newType == "task")
+                    {
+                        exitCode = createNewTask(tasks);
+                    }
+                    else
+                    {
+                        std::cout << "Unknown type" << std::endl;
+                    }
+                }
+                else
+                {
+                    std::cout << "Expected type" << std::endl;
+                }
             }
             else if (cmd == "exit" or cmd == "close")
             {
@@ -40,10 +60,19 @@ namespace cli
             }
             else
             {
-                cout << "Unkown Command" << endl;
+                std::cout << "Unknown Command" << std::endl;
             }
         }
 
         return exitCode;
+    }
+
+    int createNewTask(std::vector<Task> &tasks)
+    {
+        std::string taskName = readLine("Enter task name >");
+        std::string taskDescription = readLine("Enter task description >");
+        Task newTask(taskName, taskDescription);
+        tasks.push_back(newTask);
+        return -1;
     }
 } // namespace cli

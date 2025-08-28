@@ -9,6 +9,6 @@ private:
     bool completed;
 
 public:
-    Task(std::string title, std::string description);
+    Task(const std::string title, const std::string description);
     ~Task();
 };
