@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "cli.cpp"
+#include "cli.hpp"
 
 int main()
 {

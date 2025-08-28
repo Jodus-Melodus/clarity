@@ -1,14 +1,15 @@
-#include <iostream>
-#include <string>
 #include <vector>
+#include <iostream>
 
+#include "cli.hpp"
+#include "utils.hpp"
 #include "task.hpp"
 
+using namespace std;
 namespace cli
 {
-    using namespace std;
 
-    string readLine(string prompt)
+    string readLine(const string &prompt)
     {
         string buffer;
         cout << prompt;
@@ -19,20 +20,27 @@ namespace cli
     int start()
     {
         string cmd = "";
+        vector<string> args;
         int exitCode = -1;
         vector<Task> tasks;
 
         while (exitCode == -1)
         {
             cmd = readLine("> ");
+            args = utils::split(cmd, ' ');
+            cmd = args.at(0);
 
-            if (cmd == "exit" or cmd == "close")
+            if (cmd == "new")
+            {
+                string newType = args.at(1);
+            }
+            else if (cmd == "exit" or cmd == "close")
             {
                 exitCode = 0;
             }
             else
             {
-                exitCode = 0;
+                cout << "Unkown Command" << endl;
             }
         }
 
