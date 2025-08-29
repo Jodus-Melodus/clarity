@@ -23,10 +23,6 @@ namespace calendar
         }
     }
 
-    Month::~Month()
-    {
-    }
-
     std::ostream &operator<<(std::ostream &os, Month &month)
     {
         std::vector<int> d;

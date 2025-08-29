@@ -23,7 +23,6 @@ namespace calendar
 
         std::array<std::vector<Task>, 31> days;
         Month(int month);
-        ~Month();
     };
 
     std::ostream &operator<<(std::ostream &os, Month &month);
