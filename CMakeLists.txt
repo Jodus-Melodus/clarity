@@ -5,8 +5,8 @@ project(clarity)
 add_executable(clarity
     src/main.cpp
     src/cli.cpp
-    src/utils.cpp
     src/task.cpp
+    src/calendar.cpp
 )
 
 # Include path for headers

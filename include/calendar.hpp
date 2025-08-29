@@ -17,11 +17,14 @@ namespace calendar
     {
     private:
         int monthNumber;
-        int monthDayCount;
-        std::array<std::vector<Task>, 31> days;
 
     public:
+        int DayCount;
+
+        std::array<std::vector<Task>, 31> days;
         Month(int month);
         ~Month();
     };
+
+    std::ostream &operator<<(std::ostream &os, Month &month);
 } // namespace calendar

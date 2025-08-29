@@ -4,6 +4,7 @@
 #include "cli.hpp"
 #include "utils.hpp"
 #include "task.hpp"
+#include "calendar.hpp"
 
 namespace cli
 {
@@ -20,8 +21,11 @@ namespace cli
     {
         std::string cmd = "";
         std::vector<std::string> args;
-        int exitCode = -1;
         std::vector<Task> tasks;
+        int exitCode = -1;
+        calendar::Month august(8);
+
+        std::cout << august << std::endl;
 
         while (exitCode == -1)
         {
