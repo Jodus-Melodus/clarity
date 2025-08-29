@@ -32,17 +32,17 @@ namespace calendar
         std::vector<int> d;
         for (int i = 0; i < month.DayCount; i++)
         {
-            d.push_back(i);
+            d.push_back(i + 1);
         }
 
         int left = 0;
         int right = left + 7;
 
-        while (right != month.DayCount)
+        while (left < month.DayCount)
         {
             std::vector<int> slice(d.begin() + left, d.begin() + right);
             for (int x : slice)
-                std::cout << x << " ";
+                std::cout << x << ((std::to_string(x).length() == 1) ? "  " : " ");
             std::cout << std::endl;
             left = std::min(left + 7, month.DayCount);
             right = std::min(left + 7, month.DayCount);
