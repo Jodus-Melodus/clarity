@@ -5,6 +5,8 @@
 #include <array>
 #include <algorithm>
 #include <sstream>
+#include <fstream>
+#include <tuple>
 
 namespace utils
 {
@@ -31,5 +33,42 @@ namespace utils
         }
 
         return false;
+    }
+
+    int writeFile(const std::string &path, const std::string content)
+    {
+        std::ofstream out(path);
+
+        if (!out)
+        {
+            std::cerr << "Error opening file for writing" << std::endl;
+            return 1;
+        }
+
+        out << content << std::endl;
+        out.close();
+        return 0;
+    }
+
+    std::tuple<int, std::string> readFile(const std::string &path)
+    {
+        std::ifstream in(path);
+
+        if (!in)
+        {
+            std::cerr << "Error opening file for reading" << std::endl;
+            return std::make_tuple(1, nullptr);
+        }
+
+        std::string buffer;
+        std::string out;
+
+        while (std::getline(in, buffer))
+        {
+            out += buffer;
+        }
+
+        in.close();
+        return std::make_tuple(0, out);
     }
 } // namespace utils
