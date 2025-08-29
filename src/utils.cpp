@@ -17,4 +17,16 @@ namespace utils
         return tokens;
     }
 
+    template <typename T, std::size_t N>
+    bool contains(const std::array<T, N> &array, const T &value)
+    {
+        for (const auto &v : arr)
+        {
+            if (v == value)
+                return true;
+        }
+
+        return false;
+    }
+
 } // namespace utils
